@@ -17,7 +17,6 @@ migrate_working_dir/
 .idea/
 
 
-lib/core/utils/api_keys.dart
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
@@ -44,3 +43,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+
+
+# ignore api keys file
+lib/core/utils/api_keys.dart
