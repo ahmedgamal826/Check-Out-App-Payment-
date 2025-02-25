@@ -18,7 +18,6 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
     List<String> paymentMethods = [
       'assets/images/card.svg',
       'assets/images/paypal.svg',
-      'assets/images/apple_pay.svg'
     ];
 
     return SizedBox(
@@ -28,7 +27,7 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
         itemCount: paymentMethods.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: GestureDetector(
               onTap: () {
                 activeIndex = index;

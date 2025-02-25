@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_payment/core/widgets/custom_button.dart';
+import 'package:flutter_payment/features/checkout/data/repos/checkout_repo_implementation.dart';
+import 'package:flutter_payment/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/payment_details_view.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/widgets/order_info_item.dart';
+import 'package:flutter_payment/features/checkout/presentation/views/widgets/payment_methods_bottom_sheet.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/widgets/total_price_widget.dart';
 
@@ -60,39 +64,20 @@ class MyCartViewBody extends StatelessWidget {
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true, // يتيح التحكم في الارتفاع
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                 ),
                 builder: (context) {
-                  return const PaymentMethodsBottomSheet();
+                  return BlocProvider(
+                    create: (context) =>
+                        PaymentCubit(CheckoutRepoImplementation()),
+                    child: const PaymentMethodsBottomSheet(),
+                  );
                 },
               );
             },
           ),
           const SizedBox(height: 16),
-        ],
-      ),
-    );
-  }
-}
-
-class PaymentMethodsBottomSheet extends StatelessWidget {
-  const PaymentMethodsBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 16),
-          const PaymentMethodsListView(),
-          const SizedBox(height: 32),
-          CustomButton(
-            title: 'Continue',
-            onTap: () {},
-          )
         ],
       ),
     );
