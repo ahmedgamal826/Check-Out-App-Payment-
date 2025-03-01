@@ -3,8 +3,11 @@ import 'package:flutter_payment/features/checkout/presentation/views/widgets/pay
 
 class PaymentMethodsListView extends StatefulWidget {
   const PaymentMethodsListView({
+    required this.onPaymentMethodSelected,
     super.key,
   });
+
+  final ValueChanged<String> onPaymentMethodSelected; // Callback function
 
   @override
   State<PaymentMethodsListView> createState() => _PaymentMethodsListViewState();
@@ -19,6 +22,7 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
       'assets/images/card.svg',
       'assets/images/paypal.svg',
     ];
+    final List<String> paymentMethodNames = ["Credit", "PayPal"];
 
     return SizedBox(
       height: 62,
@@ -30,8 +34,10 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: GestureDetector(
               onTap: () {
-                activeIndex = index;
-                setState(() {});
+                setState(() {
+                  activeIndex = index;
+                });
+                widget.onPaymentMethodSelected(paymentMethodNames[index]);
               },
               child: PaymentMethodItem(
                 isActive: activeIndex == index,

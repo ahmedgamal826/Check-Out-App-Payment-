@@ -10,7 +10,7 @@ class ThankYouView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: buildAppbar(),
+        appBar: buildAppbar(context: context),
         body: Transform.translate(
           offset: const Offset(0, -16),
           child: const ThankYouViewBody(),

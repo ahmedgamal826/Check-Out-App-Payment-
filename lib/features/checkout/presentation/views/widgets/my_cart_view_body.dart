@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_payment/core/widgets/custom_button.dart';
 import 'package:flutter_payment/features/checkout/data/repos/checkout_repo_implementation.dart';
 import 'package:flutter_payment/features/checkout/presentation/manager/cubit/payment_cubit.dart';
-import 'package:flutter_payment/features/checkout/presentation/views/payment_details_view.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/widgets/order_info_item.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/widgets/payment_methods_bottom_sheet.dart';
-import 'package:flutter_payment/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/widgets/total_price_widget.dart';
 
 class MyCartViewBody extends StatelessWidget {

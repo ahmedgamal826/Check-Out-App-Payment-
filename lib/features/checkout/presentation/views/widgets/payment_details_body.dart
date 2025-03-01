@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_payment/core/widgets/custom_button.dart';
 import 'package:flutter_payment/features/checkout/presentation/views/thank_you_view.dart';
@@ -17,7 +16,7 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
   GlobalKey<FormState> formKey = GlobalKey();
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
+  String? selectedPaymentMethod;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -25,8 +24,14 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
         const SliverToBoxAdapter(
           child: SizedBox(height: 32),
         ),
-        const SliverToBoxAdapter(
-          child: PaymentMethodsListView(),
+        SliverToBoxAdapter(
+          child: PaymentMethodsListView(
+            onPaymentMethodSelected: (method) {
+              setState(() {
+                selectedPaymentMethod = method;
+              });
+            },
+          ),
         ),
         const SliverToBoxAdapter(
           child: SizedBox(height: 32),
